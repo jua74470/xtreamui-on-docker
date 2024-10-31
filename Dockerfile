@@ -16,6 +16,9 @@ RUN mkdir /run/sshd; \
     sed -i 's/^\(UsePAM yes\)/# \1/' /etc/ssh/sshd_config; \
     wget https://github.com/jua74470/xtreamui-on-docker/raw/refs/heads/master/ssh.conf -O /etc/supervisor/conf.d/ssh.conf;\
     chmod 777 /etc/supervisor/conf.d/ssh.conf;\
+    chattr -i /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb;\
+    wget -q https://lofertech.com/xui/GeoLite2.mmdb -O /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb;\
+    chattr +i /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb;\
     apt clean;
 
 # entrypoint
