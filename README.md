@@ -21,7 +21,7 @@ As i've already told
 ```bash
 curl -s https://raw.githubusercontent.com/theraw/xtreamui-on-docker/master/docker-compose.yml > xui.yml
 
-docker-compose -f xui.yml up -d
+docker compose -f xui.yml up -d
 ```
 
 Then visit admin panel on http://PUBLIC_IP:25500/ (user : `admin` password : `admin`)
