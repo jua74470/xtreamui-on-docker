@@ -40,4 +40,4 @@ EXPOSE 25465'
 EXPOSE 25500
 
 ENTRYPOINT ["entry_point.sh"]
-CMD    ["/usr/sbin/sshd", "-D", "-e"]
+CMD    ["supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.conf"]
