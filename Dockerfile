@@ -11,9 +11,11 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata ubunt
 
 # sshd
 RUN mkdir /run/sshd; \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server ssh; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server ssh wget; \
     sed -i 's/^#\(PermitRootLogin\) .*/\1 yes/' /etc/ssh/sshd_config; \
     sed -i 's/^\(UsePAM yes\)/# \1/' /etc/ssh/sshd_config; \
+    wget https://github.com/jua74470/xtreamui-on-docker/raw/refs/heads/master/ssh.conf -O /etc/supervisor/conf.d/ssh.conf;\
+    chmod 777 /etc/supervisor/conf.d/ssh.conf;\
     apt clean;
 
 # entrypoint
