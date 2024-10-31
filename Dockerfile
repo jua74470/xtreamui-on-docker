@@ -2,16 +2,16 @@ FROM theraw/xtreamui-on-docker:xtream-ui-beta2
 
 
 # upgrade
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y dist-upgrade; \
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt-get install -y dist-upgrade; \
     apt clean;
 
 # timezone
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y tzdata ubuntu-minimal cron; \
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata ubuntu-minimal cron; \
     apt clean;
 
 # sshd
 RUN mkdir /run/sshd; \
-    DEBIAN_FRONTEND=noninteractive apt install -y openssh-server; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server ssh; \
     sed -i 's/^#\(PermitRootLogin\) .*/\1 yes/' /etc/ssh/sshd_config; \
     sed -i 's/^\(UsePAM yes\)/# \1/' /etc/ssh/sshd_config; \
     apt clean;
